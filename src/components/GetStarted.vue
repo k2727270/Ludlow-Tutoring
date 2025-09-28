@@ -273,7 +273,7 @@
 .form-header p {
   font-size: 1rem;
   opacity: 0.9;
-  margin: 0;
+  text-align: center;
 }
 
 .form-embed {
