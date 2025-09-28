@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "vueCompilerOptions": {
+    "globalTypesPath": "./node_modules/vue/global.d.ts"
+  },
+  "exclude": ["node_modules", "dist"]
+}
