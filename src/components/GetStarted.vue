@@ -8,7 +8,10 @@
     <section class="forms-section">
       <div class="forms-container">
         <h2>Get Started Today</h2>
-        <p>Choose the form that best fits your needs to continue powering your academic journey!</p>
+        <p>
+          Choose the form that best fits your needs to continue powering your academic journey! (log
+          in with your <i>school email</i>)
+        </p>
 
         <div class="forms-grid">
           <div class="form-slot">
