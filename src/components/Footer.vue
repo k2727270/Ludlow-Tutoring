@@ -20,18 +20,18 @@
 
       <div class="footer-section">
         <h4>Locations</h4>
-        <div class="location-item">
+        <!-- <div class="location-item">
           <span class="location-icon">💻</span>
           <div class="location-details">
             <span class="location-type">Remote Sessions</span>
-            <span class="location-desc">Available worldwide</span>
+            <span class="location-desc">Available at your convenience</span>
           </div>
-        </div>
+        </div> -->
         <div class="location-item">
           <span class="location-icon">🙋</span>
           <div class="location-details">
             <span class="location-type">In-Person</span>
-            <span class="location-desc">Ludlow, MA area</span>
+            <span class="location-desc">LHS - 500 Chapin St, Ludlow, MA 01056</span>
           </div>
         </div>
       </div>
@@ -50,9 +50,7 @@
   </footer>
 </template>
 
-<script setup>
-// No additional logic needed for now
-</script>
+<script setup></script>
 
 <style scoped>
 .footer {
@@ -261,7 +259,6 @@
   }
 }
 
-/* Mobile responsive */
 @media (max-width: 768px) {
   .footer-content {
     grid-template-columns: 1fr;
