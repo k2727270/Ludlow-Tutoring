@@ -280,6 +280,10 @@
     gap: 1rem;
   }
 
+  .footer-section h4::after {
+    visibility: hidden;
+  }
+
   .footer-section ul {
     align-items: center;
   }

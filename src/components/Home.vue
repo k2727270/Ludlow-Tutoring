@@ -285,11 +285,10 @@ header p {
   box-shadow: 0 8px 25px rgba(78, 205, 196, 0.3);
 }
 
-/* Responsive design */
 @media (max-width: 768px) {
   header {
     padding: 5rem 1rem 3rem;
-    margin-top: 1rem;
+    margin: 1rem 1rem;
   }
 
   header h1 {
