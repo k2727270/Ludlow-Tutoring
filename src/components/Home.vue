@@ -97,7 +97,7 @@ body {
 header {
   background: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 50%, #45b7d1 100%);
   color: white;
-  padding: 6rem 2rem 3rem;
+  padding: 8rem 2rem 5rem;
   text-align: center;
   border-radius: 2rem 2rem 2rem 2rem;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
