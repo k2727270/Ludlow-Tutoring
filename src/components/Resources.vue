@@ -398,11 +398,10 @@ const studyTips = ref([
   margin: 0;
 }
 
-/* Mobile responsive */
 @media (max-width: 768px) {
   .page-header {
     padding: 6rem 1rem 4rem;
-    margin-top: 1rem;
+    margin-top: 1rem 1rem;
   }
 
   .page-header h1 {
