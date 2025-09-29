@@ -105,7 +105,7 @@ const resourceCards = ref([
         icon: '📝',
         title: 'AP Study Guides',
         description: 'Comprehensive study materials',
-        url: 'https://www.albert.io',
+        url: 'https://knowt.com/exams/AP',
       },
       {
         id: 3,
