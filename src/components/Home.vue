@@ -287,7 +287,7 @@ header p {
 
 @media (max-width: 768px) {
   header {
-    padding: 5rem 1rem 3rem;
+    padding: 9rem 1rem 6rem;
     margin: 1rem 1rem;
   }
 
