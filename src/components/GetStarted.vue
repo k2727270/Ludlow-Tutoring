@@ -14,54 +14,16 @@
         </p>
 
         <div class="forms-grid">
-          <div class="form-slot">
+          <div v-for="form in forms" :key="form.id" class="form-slot">
             <div class="form-header">
-              <h3>📝 Need help with something specific?</h3>
-              <p>Tell us about your academic goals and needs</p>
+              <h3>{{ form.title }}</h3>
+              <p>{{ form.description }}</p>
             </div>
             <div class="form-embed">
               <iframe
-                src="https://docs.google.com/forms/d/e/1FAIpQLSe918jDOHl03NKab2Hs2o1y8E_I-QQr6WR4-H3pqPWMXGmkYw/viewform?embedded=true"
+                :src="form.url"
                 width="100%"
                 height="600"
-                frameborder="0"
-                marginheight="0"
-                marginwidth="0"
-                class="form-iframe"
-                >Loading…</iframe
-              >
-            </div>
-          </div>
-
-          <div class="form-slot">
-            <div class="form-header">
-              <h3>👩‍🏫 Want to become a tutor?</h3>
-              <p>Get started by filling out the form below</p>
-            </div>
-            <div class="form-embed">
-              <iframe
-                src="https://docs.google.com/forms/d/e/1FAIpQLSdIjV4pvAl6SJnBOYc0XmXTHbs_CcC6L3s3FmlkYUIouMHXNg/viewform?embedded=true"
-                width="100%"
-                height="600"
-                frameborder="0"
-                marginheight="0"
-                marginwidth="0"
-                class="form-iframe"
-                >Loading…</iframe
-              >
-            </div>
-          </div>
-
-          <div class="form-slot full-width">
-            <div class="form-header">
-              <h3>💭 General Inquiries & Feedback</h3>
-              <p>We're always looking for feedback and suggestions to improve our services</p>
-            </div>
-            <div class="form-embed">
-              <iframe
-                src="https://docs.google.com/forms/d/e/1FAIpQLScj5w6XHEgN0eTJzOt9uAjd6X_JTaHoLEOvMWm62_VEQZPtYQ/viewform?embedded=true"
-                width="100%"
-                height="700"
                 frameborder="0"
                 marginheight="0"
                 marginwidth="0"
@@ -104,7 +66,36 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { ref } from 'vue'
+
+const forms = ref([
+  {
+    id: 1,
+    title: '🎓 High School Tutoring',
+    description: 'Get personalized help for high school academics',
+    url: 'https://docs.google.com/forms/d/e/1FAIpQLSe918jDOHl03NKab2Hs2o1y8E_I-QQr6WR4-H3pqPWMXGmkYw/viewform?embedded=true',
+  },
+  {
+    id: 2,
+    title: '📚 Middle School Tutoring',
+    description: 'Support for middle school students in all subjects',
+    url: 'https://docs.google.com/forms/d/e/1FAIpQLSdrken7NxubkSi15DyAMFCRKRCD5yUuXeIAHZ9jFA7Ruj4NPA/viewform?embedded=true',
+  },
+  {
+    id: 3,
+    title: '👩‍🏫 Want to become a tutor?',
+    description: 'Get started by filling out the form below',
+    url: 'https://docs.google.com/forms/d/e/1FAIpQLSdIjV4pvAl6SJnBOYc0XmXTHbs_CcC6L3s3FmlkYUIouMHXNg/viewform?embedded=true',
+  },
+  {
+    id: 4,
+    title: '💭 General Inquiries & Feedback',
+    description: "We're always looking to improve our services!",
+    url: 'https://docs.google.com/forms/d/e/1FAIpQLScj5w6XHEgN0eTJzOt9uAjd6X_JTaHoLEOvMWm62_VEQZPtYQ/viewform?embedded=true',
+  },
+])
+</script>
 
 <style scoped>
 .get-started-page {
@@ -228,7 +219,7 @@
 .forms-container p {
   font-size: 1.2rem;
   color: #4a5568;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
@@ -276,6 +267,7 @@
 .form-header p {
   font-size: 1rem;
   opacity: 0.9;
+  /* margin: 0; */
   text-align: center;
 }
 
@@ -403,7 +395,7 @@
 @media (max-width: 768px) {
   .page-header {
     padding: 8rem 1rem 5rem;
-    margin-top: 1rem 1rem;
+    margin: 1rem 1rem;
   }
 
   .page-header h1 {
