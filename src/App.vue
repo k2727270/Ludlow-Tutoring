@@ -5,37 +5,24 @@ import Footer from './components/Footer.vue'
 
 <template>
   <div id="app">
-    <div class="navbar">
-      <Navbar />
-    </div>
-    <div class="container">
+    <Navbar />
+    <main class="main-content">
       <router-view />
-    </div>
-    <div class="container">
-      <Footer />
-    </div>
+    </main>
+    <Footer />
   </div>
 </template>
 
 <style>
-* {
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Inter', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background: linear-gradient(135deg, #fef7f0 0%, #f0f9ff 100%);
-  color: #2d3748;
-  line-height: 1.6;
-}
+@import './assets/main.css';
 
 #app {
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-.navbar {
-  align-items: center;
+.main-content {
+  flex: 1;
 }
 </style>

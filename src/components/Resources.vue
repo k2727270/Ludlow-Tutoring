@@ -1,49 +1,110 @@
 <template>
   <div class="resources-page">
-    <header class="page-header">
-      <h1>Helpful Resources for Students</h1>
-      <p>Struggling with your studies? We've curated the best resources to help you succeed! 🌟</p>
-    </header>
+    <!-- Page Header -->
+    <section class="page-header">
+      <div class="header-content">
+        <h1>Learning Resources</h1>
+        <p>Curated study materials and tools to help you succeed in every subject.</p>
+      </div>
+    </section>
 
+    <!-- Resource Categories -->
     <section class="resources-section">
-      <div class="resources-grid">
-        <div
-          v-for="resource in resourceCards"
-          :key="resource.id"
-          class="resource-card"
-          :class="resource.type"
-        >
-          <div class="card-header">
-            <span class="card-icon">{{ resource.icon }}</span>
-            <h2>{{ resource.title }}</h2>
-          </div>
-          <p class="card-description">{{ resource.description }}</p>
-          <div class="resource-links">
-            <a
-              v-for="link in resource.links"
-              :key="link.id"
-              :href="link.url"
-              target="_blank"
-              class="resource-link"
-            >
-              <span class="link-icon">{{ link.icon }}</span>
-              <div class="link-content">
-                <h3>{{ link.title }}</h3>
-                <p>{{ link.description }}</p>
+      <div class="section-container">
+        <div class="resources-grid">
+          <div
+            v-for="category in resourceCategories"
+            :key="category.id"
+            class="resource-category"
+          >
+            <div class="category-header">
+              <div :class="['category-icon', category.type]">{{ category.icon }}</div>
+              <div class="category-info">
+                <h2>{{ category.title }}</h2>
+                <p>{{ category.description }}</p>
               </div>
-            </a>
+            </div>
+            
+            <div class="resource-list">
+              <a
+                v-for="link in category.links"
+                :key="link.id"
+                :href="link.url"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="resource-item"
+              >
+                <div class="resource-content">
+                  <h3>{{ link.title }}</h3>
+                  <p>{{ link.description }}</p>
+                </div>
+                <svg class="arrow-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="study-tips">
-      <h2>💡 General Study Tips</h2>
-      <div class="tips-grid">
-        <div class="tip-card" v-for="tip in studyTips" :key="tip.id">
-          <span class="tip-icon">{{ tip.icon }}</span>
-          <h3>{{ tip.title }}</h3>
-          <p>{{ tip.description }}</p>
+    <!-- Study Tips -->
+    <section class="tips-section">
+      <div class="section-container">
+        <div class="section-header">
+          <h2>Study Tips & Strategies</h2>
+          <p>Proven techniques to help you learn more effectively.</p>
+        </div>
+
+        <div class="tips-grid">
+          <div v-for="tip in studyTips" :key="tip.id" class="tip-card">
+            <div :class="['tip-icon', tip.color]">{{ tip.icon }}</div>
+            <h3>{{ tip.title }}</h3>
+            <p>{{ tip.description }}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Additional Resources -->
+    <section class="additional-section">
+      <div class="section-container">
+        <div class="section-header">
+          <h2>Quick Reference Tools</h2>
+          <p>Essential calculators, converters, and reference materials.</p>
+        </div>
+
+        <div class="tools-grid">
+          <a
+            v-for="tool in quickTools"
+            :key="tool.id"
+            :href="tool.url"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="tool-card"
+          >
+            <div :class="['tool-icon', tool.color]">{{ tool.icon }}</div>
+            <div class="tool-info">
+              <h3>{{ tool.title }}</h3>
+              <p>{{ tool.description }}</p>
+            </div>
+            <svg class="external-icon" width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M11 7.5V11.5C11 12.0523 10.5523 12.5 10 12.5H2.5C1.94772 12.5 1.5 12.0523 1.5 11.5V4C1.5 3.44772 1.94772 3 2.5 3H6.5M8.5 1.5H12.5M12.5 1.5V5.5M12.5 1.5L5.5 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="section-container">
+        <div class="cta-card">
+          <h2>Need More Help?</h2>
+          <p>Our peer tutors are here to provide personalized support for any subject.</p>
+          <router-link to="/get-started" class="btn btn-primary">
+            Request a Tutor
+          </router-link>
         </div>
       </div>
     </section>
@@ -53,95 +114,135 @@
 <script setup>
 import { ref } from 'vue'
 
-const resourceCards = ref([
+const resourceCategories = ref([
   {
     id: 1,
-    type: 'science',
-    icon: '🔬',
-    title: 'Science Classes',
-    description:
-      'Struggling with chemistry or physics? Check out these helpful resources to pull through!',
+    type: 'math',
+    icon: 'π',
+    title: 'Mathematics',
+    description: 'From basic algebra to advanced calculus, find the help you need.',
     links: [
       {
         id: 1,
-        icon: '📚',
-        title: 'Khan Academy Science',
-        description: 'Free video lessons and practice exercises',
-        url: 'https://www.khanacademy.org/science',
+        title: 'Khan Academy Math',
+        description: 'Free courses covering all math levels with practice exercises',
+        url: 'https://www.khanacademy.org/math',
       },
       {
         id: 2,
-        icon: '🎥',
-        title: 'Crash Course Chemistry',
-        description: 'Fun, engaging chemistry videos',
-        url: 'https://www.youtube.com/crashcourse',
+        title: 'Desmos Graphing Calculator',
+        description: 'Interactive graphing tool for visualizing equations',
+        url: 'https://www.desmos.com/calculator',
       },
       {
         id: 3,
-        icon: '⚗️',
-        title: 'Physics Classroom',
-        description: 'Interactive physics tutorials',
-        url: 'https://www.physicsclassroom.com',
+        title: 'Wolfram Alpha',
+        description: 'Computational knowledge engine for solving complex problems',
+        url: 'https://www.wolframalpha.com',
+      },
+      {
+        id: 4,
+        title: 'Mathway',
+        description: 'Step-by-step math problem solver',
+        url: 'https://www.mathway.com',
       },
     ],
   },
   {
     id: 2,
-    type: 'ap',
-    icon: '🎓',
-    title: 'AP Courses',
-    description:
-      'Advanced Placement courses can be challenging. Here are some study aids to help you excel!',
+    type: 'science',
+    icon: '⚗',
+    title: 'Science',
+    description: 'Explore biology, chemistry, physics, and more.',
     links: [
       {
         id: 1,
-        icon: '📖',
-        title: 'AP Central Resources',
-        description: 'Official College Board materials',
-        url: 'https://apcentral.collegeboard.org',
+        title: 'Khan Academy Science',
+        description: 'Comprehensive science courses with interactive content',
+        url: 'https://www.khanacademy.org/science',
       },
       {
         id: 2,
-        icon: '📝',
-        title: 'AP Study Guides',
-        description: 'Comprehensive study materials',
-        url: 'https://knowt.com/exams/AP',
+        title: 'Physics Classroom',
+        description: 'Interactive physics tutorials and concept builders',
+        url: 'https://www.physicsclassroom.com',
       },
       {
         id: 3,
-        icon: '📊',
-        title: 'Practice Tests',
-        description: 'Test your knowledge with practice exams',
-        url: 'https://www.appracticeexams.com/#google_vignette',
+        title: 'Crash Course',
+        description: 'Engaging educational videos on YouTube',
+        url: 'https://www.youtube.com/crashcourse',
+      },
+      {
+        id: 4,
+        title: 'PhET Interactive Simulations',
+        description: 'Free science and math simulations from CU Boulder',
+        url: 'https://phet.colorado.edu',
       },
     ],
   },
   {
     id: 3,
-    type: 'sat',
-    icon: '📊',
-    title: 'SAT Prep',
-    description: 'Get ready for the SAT with these proven study materials and strategies!',
+    type: 'english',
+    icon: 'A',
+    title: 'English & Writing',
+    description: 'Improve your reading, writing, and analytical skills.',
     links: [
       {
         id: 1,
-        icon: '🎯',
-        title: 'Official SAT Practice',
-        description: 'Free, personalized SAT prep',
-        url: 'https://www.khanacademy.org/test-prep',
+        title: 'Purdue OWL',
+        description: 'Comprehensive writing resources and citation guides',
+        url: 'https://owl.purdue.edu',
       },
       {
         id: 2,
-        icon: '🏛️',
-        title: 'College Board Resources',
-        description: 'Official SAT information and tools',
+        title: 'Grammarly',
+        description: 'AI-powered writing assistant for grammar and style',
+        url: 'https://www.grammarly.com',
+      },
+      {
+        id: 3,
+        title: 'SparkNotes',
+        description: 'Literature guides and study aids',
+        url: 'https://www.sparknotes.com',
+      },
+      {
+        id: 4,
+        title: 'Hemingway Editor',
+        description: 'Tool for clear, bold writing',
+        url: 'https://hemingwayapp.com',
+      },
+    ],
+  },
+  {
+    id: 4,
+    type: 'test-prep',
+    icon: '◎',
+    title: 'Test Preparation',
+    description: 'Resources for SAT, AP exams, and standardized tests.',
+    links: [
+      {
+        id: 1,
+        title: 'Khan Academy SAT Prep',
+        description: 'Free, official SAT practice in partnership with College Board',
+        url: 'https://www.khanacademy.org/sat',
+      },
+      {
+        id: 2,
+        title: 'College Board Practice',
+        description: 'Official SAT practice tests and resources',
         url: 'https://satsuite.collegeboard.org/practice',
       },
       {
         id: 3,
-        icon: '📘',
-        title: 'Download Bluebook!',
-        description: 'Practice for the SAT with the official College Board Bluebook!',
+        title: 'AP Central',
+        description: 'Official AP course and exam information',
+        url: 'https://apcentral.collegeboard.org',
+      },
+      {
+        id: 4,
+        title: 'Bluebook App',
+        description: 'Practice for the digital SAT with the official app',
         url: 'https://bluebook.collegeboard.org/students/download-bluebook',
       },
     ],
@@ -153,272 +254,496 @@ const studyTips = ref([
     id: 1,
     icon: '⏰',
     title: 'Time Management',
-    description:
-      'Create a study schedule and stick to it. Break your study sessions into manageable chunks.',
+    description: 'Create a study schedule with specific goals. Use techniques like Pomodoro (25 min focus, 5 min break) to maintain concentration.',
+    color: 'blue'
   },
   {
     id: 2,
-    icon: '🎯',
-    title: 'Set Goals',
-    description: 'Set specific, achievable goals for each study session. Celebrate your progress!',
+    icon: '✓',
+    title: 'Active Recall',
+    description: 'Test yourself regularly instead of just re-reading notes. Try to explain concepts in your own words.',
+    color: 'green'
   },
   {
     id: 3,
-    icon: '🤝',
-    title: 'Study Groups',
-    description: 'Form study groups with classmates. Teaching others helps you learn better too!',
+    icon: '↻',
+    title: 'Spaced Repetition',
+    description: 'Review material at increasing intervals. This helps move information from short-term to long-term memory.',
+    color: 'purple'
   },
   {
     id: 4,
-    icon: '🔄',
-    title: 'Practice Regularly',
-    description:
-      'Consistent practice is key. Review material regularly to keep it fresh in your mind.',
+    icon: '⚡',
+    title: 'Eliminate Distractions',
+    description: 'Find a quiet study space, put your phone away, and use website blockers if needed.',
+    color: 'orange'
   },
   {
     id: 5,
-    icon: '📝',
-    title: 'Take Notes',
-    description:
-      'Write down key concepts and create summaries. Active note-taking improves retention and understanding.',
+    icon: '☽',
+    title: 'Get Enough Sleep',
+    description: 'Sleep is crucial for memory consolidation. Aim for 8-10 hours per night, especially before exams.',
+    color: 'blue'
   },
   {
     id: 6,
-    icon: '🧠',
-    title: 'Active Learning',
-    description:
-      'Engage with the material through questions, discussions, and practical applications rather than passive reading.',
+    icon: '?',
+    title: 'Ask Questions',
+    description: 'Don\'t be afraid to ask teachers, tutors, or classmates for help when you\'re stuck.',
+    color: 'green'
+  },
+])
+
+const quickTools = ref([
+  {
+    id: 1,
+    icon: '∑',
+    title: 'Scientific Calculator',
+    description: 'Full-featured online calculator',
+    url: 'https://www.desmos.com/scientific',
+    color: 'math'
+  },
+  {
+    id: 2,
+    icon: '⚖',
+    title: 'Unit Converter',
+    description: 'Convert between different units',
+    url: 'https://www.unitconverters.net',
+    color: 'science'
+  },
+  {
+    id: 3,
+    icon: '📖',
+    title: 'Citation Generator',
+    description: 'Create MLA, APA, Chicago citations',
+    url: 'https://www.scribbr.com/citation/generator/',
+    color: 'english'
+  },
+  {
+    id: 4,
+    icon: '⌘',
+    title: 'Periodic Table',
+    description: 'Interactive periodic table',
+    url: 'https://ptable.com',
+    color: 'science'
+  },
+  {
+    id: 5,
+    icon: '📅',
+    title: 'Study Planner',
+    description: 'Organize your study schedule',
+    url: 'https://www.notion.so/templates/student-os',
+    color: 'test-prep'
+  },
+  {
+    id: 6,
+    icon: '📝',
+    title: 'Flashcards',
+    description: 'Create and study flashcards',
+    url: 'https://quizlet.com',
+    color: 'math'
   },
 ])
 </script>
 
 <style scoped>
 .resources-page {
-  min-height: 100vh;
-  background: linear-gradient(135deg, #fef7f0 0%, #f0f9ff 100%);
+  padding-top: 64px;
 }
 
+/* Page Header */
 .page-header {
-  background: linear-gradient(135deg, #4ecdc4 0%, #45b7d1 100%);
-  color: white;
-  padding: 7rem 2rem 4rem;
-  text-align: center;
-  border-radius: 2rem 2rem 2rem 2rem;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  margin-top: 2rem;
+  background: linear-gradient(135deg, var(--ka-green) 0%, #15825d 100%);
+  color: var(--text-inverse);
+  padding: var(--space-3xl) var(--space-lg);
 }
 
-.page-header h1 {
-  font-size: 3rem;
-  margin: 0 0 1rem 0;
-  font-weight: 700;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.page-header p {
-  font-size: 1.3rem;
-  margin: 0;
-  opacity: 0.95;
-  max-width: 600px;
+.header-content {
+  max-width: var(--max-width);
   margin: 0 auto;
 }
 
+.page-header h1 {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--text-inverse);
+  margin-bottom: var(--space-sm);
+}
+
+.page-header p {
+  font-size: 1.125rem;
+  opacity: 0.9;
+  max-width: 500px;
+  margin: 0;
+}
+
+/* Section Styles */
+.section-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+}
+
+.section-header h2 {
+  font-size: 1.75rem;
+  font-weight: 900;
+  margin-bottom: var(--space-sm);
+}
+
+.section-header p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* Resources Section */
 .resources-section {
-  padding: 4rem 2rem;
-  width: 100%;
+  padding: var(--space-3xl) 0;
 }
 
 .resources-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2rem;
-  margin-bottom: 4rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-xl);
 }
 
-.resource-card {
-  background: white;
-  border-radius: 20px;
-  padding: 2rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-  border: 3px solid transparent;
-  position: relative;
-  overflow: hidden;
+.resource-category {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-xl);
+  padding: var(--space-xl);
+  transition: all var(--transition-base);
 }
 
-.resource-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
+.resource-category:hover {
+  box-shadow: var(--shadow-md);
 }
 
-.resource-card.science::before {
-  background: linear-gradient(90deg, #ff6b6b, #4ecdc4);
+.category-header {
+  display: flex;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--border-light);
 }
 
-.resource-card.ap::before {
-  background: linear-gradient(90deg, #4ecdc4, #45b7d1);
-}
-
-.resource-card.sat::before {
-  background: linear-gradient(90deg, #45b7d1, #ff6b6b);
-}
-
-.resource-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-}
-
-.card-header {
+.category-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
   display: flex;
   align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-}
-
-.card-icon {
-  font-size: 2.5rem;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
-}
-
-.card-header h2 {
-  margin: 0;
-  font-size: 1.8rem;
-  font-weight: 600;
-  color: #2d3748;
-}
-
-.card-description {
-  color: #4a5568;
-  margin-bottom: 2rem;
-  font-size: 1.1rem;
-  line-height: 1.6;
-}
-
-.resource-links {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.resource-link {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 1rem;
-  background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
-  border-radius: 12px;
-  text-decoration: none;
-  color: #2d3748;
-  transition: all 0.3s ease;
-  border: 1px solid #e2e8f0;
-}
-
-.resource-link:hover {
-  background: linear-gradient(135deg, #4ecdc4 0%, #45b7d1 100%);
-  color: white;
-  transform: translateX(5px);
-  box-shadow: 0 4px 15px rgba(78, 205, 196, 0.3);
-}
-
-.link-icon {
+  justify-content: center;
   font-size: 1.5rem;
+  font-weight: 700;
   flex-shrink: 0;
 }
 
-.link-content h3 {
-  margin: 0 0 0.25rem 0;
-  font-size: 1.1rem;
-  font-weight: 600;
+.category-icon.math {
+  background: var(--ka-teal-light);
+  color: var(--ka-teal);
 }
 
-.link-content p {
+.category-icon.science {
+  background: var(--ka-green-light);
+  color: var(--ka-green);
+}
+
+.category-icon.english {
+  background: var(--ka-purple-light);
+  color: var(--ka-purple);
+}
+
+.category-icon.test-prep {
+  background: var(--ka-orange-light);
+  color: var(--ka-orange);
+}
+
+.category-info h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: var(--space-xs);
+}
+
+.category-info p {
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
   margin: 0;
-  font-size: 0.9rem;
-  opacity: 0.8;
 }
 
-.study-tips {
-  background: linear-gradient(135deg, #f0f9ff 0%, #e6fffa 100%);
-  padding: 4rem 2rem;
-  border-radius: 2rem;
-  margin: 2rem;
+.resource-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
 }
 
-.study-tips h2 {
-  text-align: center;
-  font-size: 2.5rem;
-  color: #2d3748;
-  margin-bottom: 3rem;
+.resource-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-md);
+  background: var(--bg-secondary);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.resource-item:hover {
+  background: var(--color-primary-light);
+}
+
+.resource-content h3 {
+  font-size: 0.9375rem;
   font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.resource-content p {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.arrow-icon {
+  color: var(--text-muted);
+  flex-shrink: 0;
+  transition: all var(--transition-fast);
+}
+
+.resource-item:hover .arrow-icon {
+  color: var(--color-primary);
+  transform: translateX(3px);
+}
+
+/* Tips Section */
+.tips-section {
+  padding: var(--space-3xl) 0;
+  background: var(--bg-secondary);
 }
 
 .tips-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  width: 100%;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
 }
 
 .tip-card {
-  background: white;
-  padding: 2rem;
-  border-radius: 16px;
-  text-align: center;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-  border: 2px solid #e2e8f0;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  transition: all var(--transition-base);
 }
 
 .tip-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-  border-color: #4ecdc4;
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
 }
 
 .tip-icon {
-  font-size: 2.5rem;
-  display: block;
-  margin-bottom: 1rem;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  margin-bottom: var(--space-md);
+}
+
+.tip-icon.blue {
+  background: var(--ka-teal-light);
+  color: var(--ka-teal);
+}
+
+.tip-icon.green {
+  background: var(--ka-green-light);
+  color: var(--ka-green);
+}
+
+.tip-icon.purple {
+  background: var(--ka-purple-light);
+  color: var(--ka-purple);
+}
+
+.tip-icon.orange {
+  background: var(--ka-orange-light);
+  color: var(--ka-orange);
 }
 
 .tip-card h3 {
-  color: #2d3748;
-  margin-bottom: 1rem;
-  font-size: 1.3rem;
-  font-weight: 600;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
 }
 
 .tip-card p {
-  color: #4a5568;
-  line-height: 1.6;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
   margin: 0;
+  line-height: 1.6;
+}
+
+/* Additional Section */
+.additional-section {
+  padding: var(--space-3xl) 0;
+}
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
+.tool-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-lg);
+  background: var(--bg-primary);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.tool-card:hover {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-md);
+}
+
+.tool-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.125rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.tool-icon.math {
+  background: var(--ka-teal-light);
+  color: var(--ka-teal);
+}
+
+.tool-icon.science {
+  background: var(--ka-green-light);
+  color: var(--ka-green);
+}
+
+.tool-icon.english {
+  background: var(--ka-purple-light);
+  color: var(--ka-purple);
+}
+
+.tool-icon.test-prep {
+  background: var(--ka-orange-light);
+  color: var(--ka-orange);
+}
+
+.tool-info {
+  flex: 1;
+}
+
+.tool-info h3 {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.tool-info p {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.external-icon {
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.tool-card:hover .external-icon {
+  color: var(--color-primary);
+}
+
+/* CTA Section */
+.cta-section {
+  padding: var(--space-2xl) 0 var(--space-3xl);
+}
+
+.cta-card {
+  background: var(--color-primary);
+  color: var(--text-inverse);
+  border-radius: var(--radius-xl);
+  padding: var(--space-2xl);
+  text-align: center;
+}
+
+.cta-card h2 {
+  color: var(--text-inverse);
+  font-size: 1.5rem;
+  font-weight: 900;
+  margin-bottom: var(--space-sm);
+}
+
+.cta-card p {
+  opacity: 0.9;
+  margin-bottom: var(--space-lg);
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-card .btn {
+  background: var(--bg-primary);
+  color: var(--color-primary);
+}
+
+.cta-card .btn:hover {
+  background: var(--ka-gray-100);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .resources-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tips-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tools-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 768px) {
   .page-header {
-    padding: 6rem 1rem 4rem;
-    margin-top: 1rem 1rem;
+    padding: var(--space-2xl) var(--space-md);
   }
 
   .page-header h1 {
-    font-size: 2.2rem;
-  }
-
-  .resources-grid {
-    grid-template-columns: 1fr;
+    font-size: 2rem;
   }
 
   .tips-grid {
     grid-template-columns: 1fr;
   }
 
-  .resource-card,
-  .tip-card {
-    padding: 1.5rem;
+  .tools-grid {
+    grid-template-columns: 1fr;
   }
 }
 </style>
