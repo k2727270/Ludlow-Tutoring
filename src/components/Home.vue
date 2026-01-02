@@ -74,6 +74,16 @@ const featuredResources = ref([
     icon: '≡',
     color: 'science',
     internal: true
+  },
+  {
+    id: 4,
+    category: 'Explore More',
+    title: 'History, Civics & Internships',
+    description: 'History resources, fun learning sites, government info, and internship opportunities.',
+    link: '/more',
+    icon: '⊕',
+    color: 'more',
+    internal: true
   }
 ])
 
@@ -507,7 +517,7 @@ const quickLinks = ref([
 
 .featured-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: var(--space-lg);
 }
 
@@ -552,6 +562,11 @@ const quickLinks = ref([
 .featured-icon.science {
   background: var(--ka-green-light);
   color: var(--ka-green);
+}
+
+.featured-icon.more {
+  background: var(--ka-orange-light);
+  color: var(--ka-orange);
 }
 
 .featured-category {

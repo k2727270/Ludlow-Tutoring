@@ -18,6 +18,7 @@
             <ul>
               <li><router-link to="/">Home</router-link></li>
               <li><router-link to="/resources">Resources</router-link></li>
+              <li><router-link to="/more">More</router-link></li>
               <li><router-link to="/get-started">Get Started</router-link></li>
             </ul>
           </div>
@@ -28,7 +29,7 @@
               <li><a href="https://www.khanacademy.org/math" target="_blank" rel="noopener">Mathematics</a></li>
               <li><a href="https://www.khanacademy.org/science" target="_blank" rel="noopener">Science</a></li>
               <li><a href="https://owl.purdue.edu" target="_blank" rel="noopener">English & Writing</a></li>
-              <li><a href="https://www.khanacademy.org/sat" target="_blank" rel="noopener">Test Prep</a></li>
+              <li><router-link to="/more">History & More</router-link></li>
             </ul>
           </div>
 

@@ -96,6 +96,22 @@
       </div>
     </section>
 
+    <!-- More Resources Banner -->
+    <section class="more-banner-section">
+      <div class="section-container">
+        <router-link to="/more" class="more-banner">
+          <div class="more-banner-icon">⊕</div>
+          <div class="more-banner-content">
+            <h3>Looking for more?</h3>
+            <p>Explore history resources, fun learning sites, government & civics, and internship opportunities for high schoolers.</p>
+          </div>
+          <svg class="more-banner-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </router-link>
+      </div>
+    </section>
+
     <!-- CTA Section -->
     <section class="cta-section">
       <div class="section-container">
@@ -675,6 +691,70 @@ const quickTools = ref([
 
 .tool-card:hover .external-icon {
   color: var(--color-primary);
+}
+
+/* More Banner Section */
+.more-banner-section {
+  padding: var(--space-xl) 0;
+}
+
+.more-banner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  padding: var(--space-xl);
+  background: linear-gradient(135deg, var(--ka-orange-light) 0%, #fff5eb 100%);
+  border: 1px solid var(--ka-orange);
+  border-radius: var(--radius-xl);
+  text-decoration: none;
+  transition: all var(--transition-base);
+}
+
+.more-banner:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+.more-banner-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-lg);
+  background: var(--ka-orange);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.more-banner-content {
+  flex: 1;
+}
+
+.more-banner-content h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-xs);
+}
+
+.more-banner-content p {
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.more-banner-arrow {
+  color: var(--ka-orange);
+  flex-shrink: 0;
+  transition: transform var(--transition-fast);
+}
+
+.more-banner:hover .more-banner-arrow {
+  transform: translateX(4px);
 }
 
 /* CTA Section */

@@ -19,6 +19,9 @@
         >
           Resources
         </router-link>
+        <router-link to="/more" class="nav-link" :class="{ active: $route.name === 'More' }">
+          More
+        </router-link>
         <router-link
           to="/get-started"
           class="nav-link nav-cta"
@@ -56,6 +59,14 @@
             @click="closeMenu"
           >
             Resources
+          </router-link>
+          <router-link
+            to="/more"
+            class="mobile-nav-link"
+            :class="{ active: $route.name === 'More' }"
+            @click="closeMenu"
+          >
+            More
           </router-link>
           <router-link
             to="/get-started"
@@ -257,7 +268,7 @@ const closeMenu = () => {
 .nav-link.active::after {
   content: '';
   position: absolute;
-  bottom: -20px;
+  bottom: -12px;
   left: 50%;
   transform: translateX(-50%);
   width: calc(100% - var(--space-md));
